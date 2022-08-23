@@ -7,6 +7,7 @@
 }
 
 body {
+  font-family: "VT323";
   background: linear-gradient(
     15deg,
     rgba(128, 128, 128, 0.5) 64%,
