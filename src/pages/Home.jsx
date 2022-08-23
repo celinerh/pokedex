@@ -45,11 +45,11 @@ const Home = () => {
       border-radius: 3px;
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      justify-content: space-between;
     `,
 
     pokemonsContainer: css`
-      height: 400px;
+      height: 410px;
       overflow-y: auto;
       padding: 10px;
       border-radius: 5px;
@@ -88,12 +88,15 @@ const Home = () => {
       color: #000;
       text-decoration: none;
       text-transform: uppercase;
+      font-size: 1.2rem;
     `,
     noResult: css`
       font-family: "VT323";
       letter-spacing: 1px;
     `,
     searchField: css`
+      font-family: "VT323";
+      font-size: 1rem;
       outline: none;
       width: 100%;
       background: linear-gradient(
@@ -103,11 +106,14 @@ const Home = () => {
       );
       padding: 5px;
       border-radius: 3px;
-      font-family: "VT323";
       border: inset #879a65 3px;
       letter-spacing: 1px;
     `,
-    rightPanel: css``,
+    rightPanel: css`
+      padding: 10px;
+      border: inset #b31818 3px;
+      border-radius: 3px;
+    `,
   };
 
   return (
