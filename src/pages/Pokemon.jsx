@@ -13,9 +13,40 @@ const Pokemon = () => {
   );
 
   const styles = {
-    heading: css`
-      text-transform: capitalize;
+    rightPanel: css`
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
     `,
+    header: css`
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    `,
+    heading: css`
+      flex: 3;
+      width: 100%;
+      text-transform: uppercase;
+      font-size: 2rem;
+      white-space: nowrap;
+
+      background: linear-gradient(
+        14deg,
+        rgb(165, 205, 83) 60%,
+        rgb(193, 217, 144) 65%
+      );
+      padding: 5px;
+      border-radius: 3px;
+      border: inset #879a65 3px;
+      letter-spacing: 1px;
+
+      &.pokemonId {
+        text-align: right;
+        flex: 1;
+      }
+    `,
+
     imageBackground: css`
       border-radius: 5px;
       border: inset #9aa28b 3px;
@@ -31,6 +62,27 @@ const Pokemon = () => {
       display: flex;
       justify-content: center;
     `,
+    image: css`
+      display: block;
+      width: 100%;
+    `,
+    statsContainer: css`
+      display: flex;
+      gap: 10px;
+    `,
+    stats: css`
+      width: 100%;
+      max-width: 162px;
+      background: linear-gradient(
+        14deg,
+        rgb(165, 205, 83) 60%,
+        rgb(193, 217, 144) 65%
+      );
+      padding: 5px;
+      border-radius: 3px;
+      border: inset #879a65 3px;
+      letter-spacing: 1px;
+    `,
   };
 
   return (
@@ -38,16 +90,30 @@ const Pokemon = () => {
       {isLoading ? (
         <p>Loading...</p>
       ) : (
-        <div>
-          <p>#{pokemon.id}</p>
-          <div css={styles.imageBackground}>
-            <img src={pokemon.sprites.front_default} alt={pokemon.name} />
+        <div css={styles.rightPanel}>
+          <div css={styles.header}>
+            <h1 css={styles.heading}>{pokemon.name}</h1>
+            <p css={styles.heading} className="pokemonId">
+              #{pokemon.id}
+            </p>
           </div>
 
-          <h1 css={styles.heading}>{pokemon.name}</h1>
-          <Types types={pokemon.types} />
-          <p>{pokemon.weight * 0.1} kg</p>
-          <p>{pokemon.height / 10} m</p>
+          <div css={styles.imageBackground}>
+            <img
+              css={styles.image}
+              src={pokemon.sprites.front_default}
+              alt={pokemon.name}
+            />
+          </div>
+
+          <div css={styles.statsContainer}>
+            <div css={styles.stats}>
+              <p>Weight(kg).....{pokemon.weight * 0.1}</p>
+              <p>Height(m)......{pokemon.height / 10}</p>
+            </div>
+
+            <Types types={pokemon.types} />
+          </div>
         </div>
       )}
     </div>
