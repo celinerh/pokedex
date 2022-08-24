@@ -28,7 +28,7 @@ const Pokemon = () => {
       flex: 3;
       width: 100%;
       text-transform: uppercase;
-      font-size: 2rem;
+      font-size: 1.1rem;
       white-space: nowrap;
 
       background: linear-gradient(
@@ -66,6 +66,10 @@ const Pokemon = () => {
       display: block;
       width: 100%;
     `,
+    imagePokeball: css`
+      display: block;
+      width: 80%;
+    `,
     statsContainer: css`
       display: flex;
       gap: 10px;
@@ -99,17 +103,25 @@ const Pokemon = () => {
           </div>
 
           <div css={styles.imageBackground}>
-            <img
-              css={styles.image}
-              src={pokemon.sprites.front_default}
-              alt={pokemon.name}
-            />
+            {pokemon.sprites.front_default ? (
+              <img
+                css={styles.image}
+                src={pokemon.sprites.front_default}
+                alt={pokemon.name}
+              />
+            ) : (
+              <img
+                css={styles.imagePokeball}
+                src={"/images/pokeball.png"}
+                alt={pokemon.name}
+              />
+            )}
           </div>
 
           <div css={styles.statsContainer}>
             <div css={styles.stats}>
-              <p>Weight(kg).....{pokemon.weight * 0.1}</p>
-              <p>Height(m)......{pokemon.height / 10}</p>
+              <p>Weight(kg).....{(pokemon.weight * 0.1).toFixed(1)}</p>
+              <p>Height(m)......{(pokemon.height / 10).toFixed(1)}</p>
             </div>
 
             <Types types={pokemon.types} />
