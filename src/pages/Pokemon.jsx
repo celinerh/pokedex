@@ -61,6 +61,9 @@ const Pokemon = () => {
       );
       display: flex;
       justify-content: center;
+      align-items: center;
+      width: 331px;
+      height: 331px;
     `,
     image: css`
       display: block;
@@ -68,7 +71,8 @@ const Pokemon = () => {
     `,
     imagePokeball: css`
       display: block;
-      width: 80%;
+      width: 40%;
+      height: 40%;
     `,
     statsContainer: css`
       display: flex;
